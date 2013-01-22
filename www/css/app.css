@@ -44,6 +44,22 @@ button.punch
     text-shadow: 0px -1px 1px #1e2d4d;
     width: 90%;
 }
+
+.punch.red {
+    background:#A84141;
+    border-bottom: 1px solid #151e33;
+    border-left: 1px solid #4D1F1F;
+    border-right: 1px solid #4D1F1F;
+    border-top: #8C3838;
+    box-shadow: inset 0 1px 10px 1px #EE5C5C, 0px 1px 0 #4D1D1D, 0 6px 0px #531F1F, 0 8px 4px 1px #111111;
+    text-shadow: 0px -1px 1px #4D1E1E;
+}
+
+.punch.red:hover, .punch.red:active {
+    box-shadow: inset 0 0px 20px 1px #FF8787, 0px 1px 0 #4D1D1D, 0 6px 0px #531F1F, 0 8px 4px 1px #111111;
+    cursor: pointer;
+}
+
 button.punch:hover, button.punch:active
 {
     box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;

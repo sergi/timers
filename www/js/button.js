@@ -1,5 +1,8 @@
 "use strict";
 
+var alarmSound = new Audio("alarm.ogg");
+alarmSound.loop = true;
+
 function padLeft(string,pad,length){
     return (new Array(length+1).join(pad)+string).slice(-length);
 }
@@ -29,7 +32,6 @@ define(function(require) {
                     self.alarm();
                 } else {
                     var left = self.maxTime - passed
-                    console.log(left)
                     self.update(Math.floor(left / 1000));
                 }
             }, 100);
@@ -38,6 +40,13 @@ define(function(require) {
         },
 
         alarm: function() {
+            alarmSound.play();
+            this.btn.className = this.btn.className + " red";
+            var text = this.btn.textContent;
+            var self = this;
+            this.blinking = setInterval(function() {
+                self.btn.textContent = self.btn.textContent === "" ? text : "";
+            }, 500);
         },
 
         update: function(passed) {
@@ -48,10 +57,13 @@ define(function(require) {
 
         reset: function(val) {
             clearInterval(this.timer);
+            clearInterval(this.blinking);
             if (val != undefined && this.btn) {
                 this.btn.textContent = formatTime(val);
             }
             this.running = false;
+            alarmSound.pause(); // FIXME Will stop all alarms
+            this.btn.className = this.btn.className.replace("red", "");
         },
 
         render: function roundRect(x, y, width) {
