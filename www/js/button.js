@@ -1,6 +1,6 @@
 "use strict";
 
-var alarmSound = new Audio("alarm.ogg");
+var alarmSound = new Audio("alarm.wav");
 alarmSound.loop = true;
 
 function padLeft(string,pad,length){
@@ -41,6 +41,12 @@ define(function(require) {
 
         alarm: function() {
             alarmSound.play();
+
+            // Stop alarm after 2 mins. regardless
+            setTimeout(function() {
+                alarmSound.pause();
+            }, 120000);
+
             this.btn.className = this.btn.className + " red";
             var text = this.btn.textContent;
             var self = this;

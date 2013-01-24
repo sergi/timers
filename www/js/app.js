@@ -23,7 +23,7 @@ define(function(require) {
     var rowHeight = width > height ? side * 3 : side * 4;
     var blankWidth = (width - rowWidth) / (width > height ? 5 : 4);
     var blankHeight = (height - rowHeight) / (width > height ? 4 : 5);
-    var times = [1, 2, 3, 5, 10, 15, 30, 45, 60];
+    var times = [1, 2, 3, 5, 10, 15, 30, 45, 60, 90, 120, 180];
     for (var i=0, k=0; i<cols; i++) {
         for (var j=0; j<rows; j++) {
             var x = (side * j) + blankWidth * (j + 1)

@@ -1,32 +1,27 @@
 {
   "version": "0.1",
-  "name": "My App",
-  "description": "Your new awesome Open Web App",
+  "name": "Timers",
+  "description": "Quickly set new timers that warn you when the time is up",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/img/icons/mortar-16.png",
-    "48": "/img/icons/mortar-48.png",
-    "128": "/img/icons/mortar-128.png"
+    "16": "/img/icons/icon-16.png",
+    "48": "/img/icons/icon-48.png",
+    "128": "/img/icons/icon-128.png"
   },
   "developer": {
-    "name": "Your Name",
-    "url": "http://yourawesomeapp.com"
+    "name": "Sergi Mansilla",
+    "url": "http://sergi.github.com/timersapp"
   },
   "installs_allowed_from": ["*"],
   "appcache_path": "/cache.manifest",
   "locales": {
     "es": {
-      "description": "Su nueva aplicación impresionante Open Web",
+      "description": "Crea temporizadores rápidamente",
       "developer": {
-        "url": "http://yourawesomeapp.com"
+        "name": "Sergi Mansilla",
+        "url": "http://sergi.github.com/timersapp"
       }
     },
-    "it": {
-      "description": "Il vostro nuovo fantastico Open Web App",
-      "developer": {
-        "url": "http://yourawesomeapp.com"
-      }
-    }
   },
   "default_locale": "en"
 }
