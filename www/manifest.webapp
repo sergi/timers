@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "name": "Timers",
   "description": "Quickly set new timers that warn you when the time is up",
   "launch_path": "/index.html",

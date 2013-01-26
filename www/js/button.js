@@ -1,7 +1,5 @@
 "use strict";
 
-var alarmSound = new Audio("alarm.wav");
-alarmSound.loop = true;
 
 function padLeft(string,pad,length){
     return (new Array(length+1).join(pad)+string).slice(-length);
@@ -16,92 +14,52 @@ function formatTime(time) {
     return hoursText + padLeft(mins, '0', 2) + ":" + padLeft(secs, '0', 2);
 }
 
+function setBtnCaption(id, val) {
+    val = formatTime(val);
+    return document.getElementById(id).textContent = val;
+}
+
+function setBtnClass(id, val) {
+    return document.getElementById(id).classname = val;
+}
+
 define(function(require) {
-    var Button = function(maxTime) {
+    var Button = function(id, maxTime) {
+        this.id = id;
         this.maxTime = maxTime;
+        this.caption = maxTime / 1000;
     };
 
     Button.prototype = {
-        start: function() {
-            var self = this;
-            this.startTime = Date.now();
-            this.timer = setInterval(function() {
-                var passed = Date.now() - self.startTime;
-                if (passed > self.maxTime) {
-                    clearInterval(self.timer);
-                    self.alarm();
-                } else {
-                    var left = self.maxTime - passed
-                    self.update(Math.floor(left / 1000));
-                }
-            }, 100);
+        set caption(value) {
+            this._caption = setBtnCaption(this.id, value);
+        },
 
+        get caption() {
+            return this._caption;
+        },
+
+        start: function() {
+            this.startTime = Date.now();
             this.running = true;
         },
 
         alarm: function() {
-            alarmSound.play();
-
-            // Stop alarm after 2 mins. regardless
-            setTimeout(function() {
-                alarmSound.pause();
-            }, 120000);
-
-            this.btn.className = this.btn.className + " red";
-            var text = this.btn.textContent;
-            var self = this;
-            this.blinking = setInterval(function() {
-                self.btn.textContent = self.btn.textContent === "" ? text : "";
-            }, 500);
-        },
-
-        update: function(passed) {
-            if (this.btn) {
-                this.btn.textContent = formatTime(passed);
-            }
+            setBtnClass(this.id, "punch red");
         },
 
         reset: function(val) {
-            clearInterval(this.timer);
-            clearInterval(this.blinking);
-            if (val != undefined && this.btn) {
-                this.btn.textContent = formatTime(val);
-            }
+            this.caption = val;
             this.running = false;
-            alarmSound.pause(); // FIXME Will stop all alarms
-            this.btn.className = this.btn.className.replace("red", "");
-        },
-
-        render: function roundRect(x, y, width) {
-            var btn = this.btn = document.createElement("button");
-            btn.setAttribute("class", "punch")
-            btn.setAttribute("style", "width:" + width + "px;height:" + width + "px;" +
-                             "top:" + y + "px;left:" + x + "px;");
-
-            if (this.maxTime) {
-                this.btn.textContent = formatTime(this.maxTime / 1000);
-            }
-            else {
-            }
-
-            var self = this;
-            btn.addEventListener("click", self.onTap.bind(self));
-
-            document.body.appendChild(btn)
-            return btn;
+            setBtnClass(this.id, "punch");
         },
 
         onTap: function() {
             if (this.running === true) {
                 this.reset(this.maxTime / 1000);
             }
-            else {
-                if (this.maxTime) {
-                    this.start();
-                }
-                else {
-
-                }
+            else if (this.maxTime) {
+                this.start();
             }
         }
     }
