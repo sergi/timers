@@ -2,17 +2,8 @@ html, body
 {
     height: 100%;
     width: 100%;
-}
-html,body
-{
     margin: 0;
     padding: 0;
-}
-*
-{
-    box-sizing: border-box;
-    moz-box-sizing: border-box;
-    webkit-box-sizing: border-box;
 }
 
 body
@@ -27,14 +18,15 @@ body
     overflow: hidden;
 }
 button {
+    vertical-align: top;
     width: 25%;
+    padding: 0;
     height: 20%;
     margin-left: 4%;
     margin-right: 4%;
-    margin-top: 3%;
-    margin-bottom: 2%;
+    margin-top: 5%;
     float: left;
-    display: block;
+    display: inline-block;
     font: bold 120% "helvetica neue", helvetica, arial, sans-serif;
 }
 

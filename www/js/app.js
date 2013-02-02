@@ -7,6 +7,8 @@ define(function(require) {
     var alarmSound = new Audio("alarm.wav");
     alarmSound.loop = true;
 
+    screen.mozLockOrientation("portrait");
+
     var idCounter = 0;
     var buttons = {};
     var loop;
