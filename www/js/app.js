@@ -50,7 +50,9 @@ define(function(require) {
     btn.maxTime = parseInt(val) * 60 * 1000;
 
     $("#time-label").text("0:00:00");
-    $("#" + selectedBtn).click();
+    onClick({
+        target: document.getElementById(selectedBtn)
+    });
   });
 
   var idCounter = 0;
