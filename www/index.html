@@ -7,24 +7,51 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <!-- Place favicon.ico in the root directory -->
-
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/shared/style/headers.css">
   </head>
   <body>
-    <button id="btn_0" class="punch" data-time="1">01:00</button>
-    <button id="btn_4" class="punch" data-time="2">02:00</button>
-    <button id="btn_7" class="punch" data-time="3">03:00</button>
-    <button id="btn_1" class="punch" data-time="5">05:00</button>
-    <button id="btn_5" class="punch" data-time="10">10:00</button>
-    <button id="btn_8" class="punch" data-time="15">15:00</button>
-    <button id="btn_2" class="punch" data-time="30">30:00</button>
-    <button id="btn_6" class="punch" data-time="45">45:00</button>
-    <button id="btn_9" class="punch" data-time="60">1:00:00</button>
-    <button id="btn_3" class="punch" data-time="90">1:30:00</button>
-    <button id="btn_10" class="punch" data-time="120">2:00:00</button>
-    <button id="btn_11" class="punch" data-time="180">3:00:00</button>
+    <x-view class="app animated fadeInUp">
+      <x-view class="home">
+          <button id="btn_0" class="punch" data-time="1">01:00</button>
+          <button id="btn_4" class="punch" data-time="2">02:00</button>
+          <button id="btn_7" class="punch" data-time="3">03:00</button>
+          <button id="btn_1" class="punch" data-time="5">05:00</button>
+          <button id="btn_5" class="punch" data-time="10">10:00</button>
+          <button id="btn_8" class="punch" data-time="15">15:00</button>
+          <button id="btn_2" class="punch" data-time="30">30:00</button>
+          <button id="btn_6" class="punch" data-time="45">45:00</button>
+          <button id="btn_9" class="punch" data-time="60">1:00:00</button>
+          <button id="btn_3" class="punch" data-settable="true"></button>
+          <button id="btn_10" class="punch" data-settable="true"></button>
+          <button id="btn_11" class="punch" data-settable="true"></button>
+      </x-view>
+      <x-view class="config">
+        <div id="time-label">0:00:00</div>
+        <div style="text-align: center">
+            <button id="cancel_config" class="numb default">Cancel</button>
+            <button id="set_config" class="numb danger">Set</button>
+        </div>
+        <div style="margin-top: 20px;height:100%; text-align: center">
+          <button class="num">0</button>
+          <button class="num">1</button>
+          <button class="num">2</button>
+          <button class="num">3</button>
+          <button class="num">4</button>
+          <button class="num">5</button>
+          <button class="num">6</button>
+          <button class="num">7</button>
+          <button class="num">8</button>
+          <button class="num">9</button>
+      </div>
+      </x-view>
+
+      <footer class="timer-footer">
+        <button data-view=".home">About</button>
+      </footer>
+    </x-view>
 
     <script type="text/javascript" data-main="js/init.js" src="js/lib/require.js"></script>
   </body>

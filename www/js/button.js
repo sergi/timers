@@ -25,8 +25,13 @@ function setBtnClass(id, val) {
 define(function(require) {
     var Button = function(id, maxTime) {
         this.id = id;
-        this.maxTime = maxTime;
-        this.caption = maxTime / 1000;
+
+        if (maxTime) {
+            this.maxTime = maxTime;
+            this.caption = maxTime / 1000;
+        } else {
+            this.settable = true;
+        }
     };
 
     Button.prototype = {
@@ -49,6 +54,11 @@ define(function(require) {
 
         reset: function(val) {
             this.caption = val;
+            if (this.settable) {
+                this.caption = "";
+                this.maxTime = null;
+            }
+
             this.running = false;
             setBtnClass(this.id, "punch");
         },
